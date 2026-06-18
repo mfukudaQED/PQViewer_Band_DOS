@@ -1,4 +1,4 @@
-# Band + DOS Viewer
+# PQViewer (Band + DOS)
 
 A browser-based interactive viewer for electronic band structures, density of states (DOS/PDOS), and unfolded band data, which are generated in [OpenMX](https://www.openmx-square.org/).
 The viewer is distributed as a single HTML application and is designed for quick inspection, comparison, analysis, and publication-oriented figure preparation.
