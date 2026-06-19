@@ -76,7 +76,154 @@ const $=id=>document.getElementById(id),band=$('band'),dos=$('dos'),wrap=$('wrap
 const S={fermi:0,kpoints:[],band:[],dos:[],view:{bx:null,dx:null,ymin:-10,ymax:10,bYmin:-10,bYmax:10,dYmin:-10,dYmax:10,dxmin:null,dxmax:null,bxmin:null,bxmax:null,dLocalXmin:null,dLocalXmax:null,yRangeSync:true},layout:{bw:600,dw:300,h:600,minB:240,minD:120},style:{color:'#ff0000',width:1.5,dash:'solid',point:'none',psize:3,tickFontSize:16,labelFontSize:24,legendFontSize:16,font:'Times New Roman',uiFont:'Fredoka',uiFontSize:14,spinMode:'redblue',bgColor:'#ffffff',bPlotBgColor:'#ffffff',dPlotBgColor:'#ffffff',textColor:'#333333',bTickDecimals:1,dTickDecimals:1,yTickDecimals:1,bYTickStep:null,dYTickStep:null,bYMinorTicks:0,dYMinorTicks:0,bYMinorTickStep:null,dYMinorTickStep:null,bYTickDecimals:1,dYTickDecimals:1,legendShow:false,legendBox:false,legendX:null,legendY:null,legendW:null,legendH:null,legendPad:8,legendBoxColor:'#ffffff',legendBoxAlpha:1,legendTextDx:0,legendTextDy:0,bLegendShow:false,bLegendFontSize:16,bLegendBox:true,bLegendPosX:0,bLegendPosY:0,bLegendW:null,bLegendH:null,bLegendPad:10,bLegendBoxColor:'#ffffff',bLegendBoxAlpha:1,dLegendShow:false,dLegendFontSize:14,dLegendBox:true,dLegendPosX:0,dLegendPosY:0,dLegendW:null,dLegendH:null,dLegendPad:10,dLegendBoxColor:'#ffffff',dLegendBoxAlpha:1,zeroLineShow:true,yZeroLineSync:true,zeroLineColor:'#000000',zeroLineDash:'dash',zeroLineWidth:1,zeroLineDashLength:5,zeroLineGapLength:4,zeroLineDotLength:2,bZeroLineShow:true,bZeroLineColor:'#000000',bZeroLineDash:'dash',bZeroLineWidth:1,bZeroLineDashLength:5,bZeroLineGapLength:4,bZeroLineDotLength:2,dYZeroLineShow:true,dYZeroLineColor:'#000000',dYZeroLineDash:'dash',dYZeroLineWidth:1,dYZeroLineDashLength:5,dYZeroLineGapLength:4,dYZeroLineDotLength:2,dZeroLineShow:true,dZeroLineColor:'#000000',dZeroLineDash:'dash',dZeroLineWidth:1,dZeroLineDashLength:5,dZeroLineGapLength:4,dZeroLineDotLength:2,bGridDashLength:8,bGridGapLength:4,bGridDotLength:2,dGridDashLength:8,dGridGapLength:4,dGridDotLength:2,yGridDashLength:8,yGridGapLength:4,yGridDotLength:2,bYGridDashLength:8,bYGridGapLength:4,bYGridDotLength:2,dYGridDashLength:8,dYGridGapLength:4,dYGridDotLength:2,lineDashLength:8,lineGapLength:4,lineDotLength:2,bTickStep:null,dTickStep:null,yTickStep:null,bMinorTicks:0,dMinorTicks:0,yMinorTicks:0,bMinorTickStep:null,dMinorTickStep:null,yMinorTickStep:null,bKLabelShow:true,bKLabelColor:'#dddddd',bKLabelDash:'solid',bKLabelWidth:1,bKLabelDashLength:8,bKLabelGapLength:4,bKLabelDotLength:2,bGrid:true,dGrid:true,yGrid:true,yGridSync:true,bYGrid:true,dYGrid:true,bGridColor:'#dddddd',dGridColor:'#dddddd',yGridColor:'#dddddd',bYGridColor:'#dddddd',dYGridColor:'#dddddd',bGridDash:'solid',dGridDash:'solid',yGridDash:'solid',bYGridDash:'solid',dYGridDash:'solid',bGridWidth:1,dGridWidth:1,yGridWidth:1,bYGridWidth:1,dYGridWidth:1},graph:{bxl:'Band',byl:'Energy (eV)',dxl:'DOS',dyl:'Energy (eV)',bxlS:false,bylS:true,dxlS:false,dylS:false,bxt:true,byt:true,dxt:true,dyt:true},compactTop:false,zoom:'y',panelPos:'right',showPanel:true,panelCollapsed:false,showMarks:true,marksCollapsed:true,colors:['#ff0000','#0000ff','#008000','#ff0080','#ff7f00','#00bfff','#9467bd','#8c564b','#17becf'],bandCi:0,dosCi:0,markColors:['#d62728','#1f77b4','#2ca02c','#ff7f0e','#9467bd','#8c564b','#e377c2','#17becf'],mi:0,markSort:'orderDesc',markOrderCounter:0,hit:{band:[],dos:[],unfold:[]},lastGap:null,legendDrag:null,crosshair:{enabled:true,active:false,kind:'band',x:0,y:0,lastX:null,lastY:null},energyZero:{all:0,groups:{},unfold:{}},mouse:{drag:null,suppressClick:false},unfold:{enabled:false,data:null,items:[],active:null,meta:null,cache:new Map(),settings:{source:'group',column:3,group:'all orbitals',ruleSpecies:'all',ruleAtoms:'all',ruleShells:'all',ruleOrbitals:'all',cutoff:0.02,gamma:0.5,sizeMin:1.5,sizeMax:5,alphaMin:0.10,alphaMax:0.95,normalize:'none',color:'#0000ff',marker:'circle-filled',colorByWeight:false,background:true,eOffset:0,kScale:1,kOffset:0,displayMode:'map',broadening:'lorentzian',kGrid:600,eGrid:600,mapEMin:null,mapEMax:null,mapKMin:null,mapKMax:null,mapWidth:0.03,mapKWidth:0.03,mapUseView:true,colorScale:'sqrt',colorPower:0.5,colormap:'inferno-like',mapAlpha:0.95,mapGain:7,colorbarShow:true,colorbarLabel:'Intensity'}}};
 function msg(t){$('msg').textContent=t}
 function installSafeDragDrop(){if(window.__bandDosSafeDnDInstalled)return;window.__bandDosSafeDnDInstalled=true;const enter=e=>{e.preventDefault();e.stopPropagation();const d=$('drop'),p=$('plots');if(d)d.classList.add('drag');if(p)p.classList.add('drag')};const leave=e=>{e.preventDefault();e.stopPropagation();const d=$('drop'),p=$('plots');if(d)d.classList.remove('drag');if(p)p.classList.remove('drag')};['dragenter','dragover'].forEach(n=>document.addEventListener(n,enter,true));['dragleave','drop'].forEach(n=>document.addEventListener(n,leave,true));document.addEventListener('drop',e=>{const fs=e.dataTransfer&&e.dataTransfer.files;if(fs&&fs.length){try{files(fs)}catch(err){console.error(err);msg('Drop error: '+err.message)}}},true)}
-installSafeDragDrop();function gid(k){return k+'-'+Date.now()+'-'+Math.random().toString(36).slice(2)}function ncBand(){return S.colors[S.bandCi++%S.colors.length]}function ncDos(){return S.colors[S.dosCi++%S.colors.length]}function nmc(){return S.markColors[S.mi++%S.markColors.length]}function lines(t){return t.replaceAll('\r\n','\n').replaceAll('\r','\n').split('\n')}function yv(p,s){return yDisplay(p,s)}function all(){return S.band.concat(S.dos)}function grp(id){return all().filter(s=>s.group===id)}function dash(d){return d==='dash'?[8,4]:d==='dot'?[2,4]:d==='dashdot'?[8,4,2,4]:[]}function fmt(v,dec){return Number(v).toFixed(Math.max(0,Math.min(8,dec|0)))}function sym(t){return String(t||'').replaceAll('{/Symbol G}','Γ').replaceAll('{/Symbol D}','Δ').replaceAll('{/Symbol S}','Σ').replaceAll('{/Symbol L}','Λ')}function numOrNull(id){return $(id).value===''?null:+$(id).value}
+installSafeDragDrop();
+
+function remoteOpenBuildEntries(params){
+  /**
+   * Build an ordered list of remote-open entries from URL query parameters.
+   *
+   * Supported forms:
+   *   ?file=/file/ID/a.BAND&name=a.BAND&file=/file/ID/b.DOS&name=b.DOS
+   *   ?url=http://127.0.0.1:18765/file/ID/a.BAND&name=a.BAND
+   *
+   * The order of repeated file/url parameters is preserved. Names are assigned
+   * by index from repeated name parameters. This matches pqv-open --same-view.
+   */
+  const entries=[];
+  const names=params.getAll('name');
+  let fileIndex=0;
+  for(const [key,value] of params.entries()){
+    if((key==='file'||key==='url')&&value){
+      entries.push({
+        url:value,
+        name:names[fileIndex]||remoteFileNameFromUrl(value,fileIndex),
+        source:key
+      });
+      fileIndex++;
+    }
+  }
+  return entries;
+}
+
+function remoteFileNameFromUrl(fileUrl, index){
+  /**
+   * Infer a display file name from a URL when the name parameter is omitted.
+   */
+  try{
+    const u=new URL(fileUrl,window.location.href);
+    const parts=u.pathname.split('/').filter(Boolean);
+    return decodeURIComponent(parts[parts.length-1]||('remote_file_'+(index+1)));
+  }catch(_){
+    return 'remote_file_'+(index+1);
+  }
+}
+
+async function loadRemoteEntries(entries, statusPrefix){
+  /**
+   * Fetch remote-open entries, convert them to File objects, and use files().
+   */
+  if(!entries||!entries.length)return;
+  const loaded=[];
+  const statusNames=[];
+  for(let i=0;i<entries.length;i++){
+    const entry=entries[i];
+    const fileUrl=entry.url||entry.file;
+    const fileName=entry.name||remoteFileNameFromUrl(fileUrl,i);
+    const response=await fetch(fileUrl,{cache:'no-store'});
+    if(!response.ok){
+      throw new Error('Failed to fetch '+fileName+': '+response.status+' '+response.statusText);
+    }
+    const blob=await response.blob();
+    loaded.push(new File([blob],fileName,{type:blob.type||'application/octet-stream'}));
+    statusNames.push(fileName);
+  }
+  if(loaded.length){
+    msg((statusPrefix||'Loading remote file(s)')+': '+statusNames.join(', '));
+    await files(loaded);
+  }
+}
+
+async function loadRemoteFilesFromQuery(){
+  /**
+   * Load files specified by URL query parameters and pass them to the existing loader.
+   *
+   * This is used for newly opened viewer pages and same-view multi-file opening.
+   */
+  const params=new URLSearchParams(window.location.search);
+  const entries=remoteOpenBuildEntries(params);
+  if(!entries.length)return;
+  const modeLabel=entries.length===1?'Loading remote file':'Loading remote files';
+  await loadRemoteEntries(entries,modeLabel);
+}
+
+function remoteOpenWindowIdFromQuery(){
+  /**
+   * Return the target-window identifier used for append-by-polling.
+   */
+  const params=new URLSearchParams(window.location.search);
+  return params.get('window')||params.get('target')||params.get('remoteWindow')||'';
+}
+
+function installRemoteAppendPoller(){
+  /**
+   * Poll the local helper for files queued for this named viewer window.
+   *
+   * A viewer opened as http://127.0.0.1:18765/?window=main will poll
+   * /poll?window=main. Remote commands can then append files with
+   * pqv-open --target main file1 file2.
+   */
+  if(window.__pqviewerRemoteAppendPollerInstalled)return;
+  const windowId=remoteOpenWindowIdFromQuery();
+  if(!windowId)return;
+  window.__pqviewerRemoteAppendPollerInstalled=true;
+  window.__pqviewerRemoteWindowId=windowId;
+  let busy=false;
+  let failCount=0;
+  const poll=async()=>{
+    if(busy)return;
+    busy=true;
+    try{
+      const pollUrl='/poll?window='+encodeURIComponent(windowId)+'&t='+Date.now();
+      const response=await fetch(pollUrl,{cache:'no-store'});
+      if(!response.ok)throw new Error('poll failed: '+response.status+' '+response.statusText);
+      const payload=await response.json();
+      const entries=(payload&&payload.files)||[];
+      failCount=0;
+      if(entries.length){
+        await loadRemoteEntries(entries,'Appending remote file(s) to '+windowId);
+      }
+    }catch(err){
+      failCount++;
+      console.error(err);
+      if(failCount<=3)msg('Remote append polling error: '+err.message);
+    }finally{
+      busy=false;
+    }
+  };
+  msg('Remote append target window: '+windowId);
+  poll();
+  setInterval(poll,1200);
+}
+
+function installRemoteQueryLoader(){
+  /**
+   * Install startup hooks for query-parameter loading and target-window polling.
+   */
+  if(window.__pqviewerRemoteQueryLoaderInstalled)return;
+  window.__pqviewerRemoteQueryLoaderInstalled=true;
+  const run=()=>{
+    loadRemoteFilesFromQuery().catch(err=>{
+      console.error(err);
+      msg('Remote load error: '+err.message);
+      alert('Remote load error: '+err.message);
+    });
+    installRemoteAppendPoller();
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});
+  else setTimeout(run,0);
+}
+installRemoteQueryLoader();
+function gid(k){return k+'-'+Date.now()+'-'+Math.random().toString(36).slice(2)}function ncBand(){return S.colors[S.bandCi++%S.colors.length]}function ncDos(){return S.colors[S.dosCi++%S.colors.length]}function nmc(){return S.markColors[S.mi++%S.markColors.length]}function lines(t){return t.replaceAll('\r\n','\n').replaceAll('\r','\n').split('\n')}function yv(p,s){return yDisplay(p,s)}function all(){return S.band.concat(S.dos)}function grp(id){return all().filter(s=>s.group===id)}function dash(d){return d==='dash'?[8,4]:d==='dot'?[2,4]:d==='dashdot'?[8,4,2,4]:[]}function fmt(v,dec){return Number(v).toFixed(Math.max(0,Math.min(8,dec|0)))}function sym(t){return String(t||'').replaceAll('{/Symbol G}','Γ').replaceAll('{/Symbol D}','Δ').replaceAll('{/Symbol S}','Σ').replaceAll('{/Symbol L}','Λ')}function numOrNull(id){return $(id).value===''?null:+$(id).value}
 function legendPrefix(kind){return kind==='band'?'b':'d'}
 function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
 function dashEx(style,on=8,gap=4,dot=2){on=Math.max(0,+on||0);gap=Math.max(0,+gap||0);dot=Math.max(0,+dot||0);if(style==='dash')return[on,gap];if(style==='dot')return[dot,gap];if(style==='dashdot')return[on,gap,dot,gap];return[]}

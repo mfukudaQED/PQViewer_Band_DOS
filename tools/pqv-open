@@ -1,0 +1,169 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+    cat <<'EOF'
+Usage:
+  pqv-open [OPTIONS] [FILE ...]
+
+Options:
+  -s, --separate           Open each file in a separate PQViewer page. This is the default.
+  -m, --same-view          Upload all files to one newly opened PQViewer page.
+  -t, --target WINDOW      Append files to an already-open named PQViewer window.
+      --open-target WINDOW Open an empty named PQViewer window for later appends.
+  -w, --new-window         Ask the local browser to use a new window if possible.
+  -p, --port PORT          Local agent port on the remote side. Default: 18765.
+  -h, --help               Show this help.
+
+Examples:
+  pqv-open band.dat
+  pqv-open --separate band1.dat band2.dat
+  pqv-open --same-view sample.BAND sample.DOS.Tetrahedron
+  pqv-open --open-target main
+  pqv-open --target main new_band.dat new_dos.dat
+EOF
+}
+
+mode="separate"
+new_window=0
+port="18765"
+target=""
+open_target=""
+files=()
+
+while (($#)); do
+    case "$1" in
+        -s|--separate)
+            mode="separate"
+            shift
+            ;;
+        -m|--same-view|--same-page)
+            mode="same-view"
+            shift
+            ;;
+        -t|--target)
+            target="${2:?--target requires a window ID}"
+            mode="target"
+            shift 2
+            ;;
+        --open-target|--open-window)
+            open_target="${2:?--open-target requires a window ID}"
+            shift 2
+            ;;
+        -w|--new-window)
+            new_window=1
+            shift
+            ;;
+        -p|--port)
+            port="${2:?--port requires a value}"
+            shift 2
+            ;;
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        --)
+            shift
+            while (($#)); do files+=("$1"); shift; done
+            ;;
+        -* )
+            echo "pqv-open: unknown option: $1" >&2
+            usage >&2
+            exit 2
+            ;;
+        *)
+            files+=("$1")
+            shift
+            ;;
+    esac
+done
+
+: "${PQV_TOKEN:?Please set PQV_TOKEN to the token printed by pqv_agent.py}"
+
+base_url="http://127.0.0.1:${port}"
+new_query="new=${new_window}"
+
+if [[ -n "$open_target" ]]; then
+    if ((${#files[@]} != 0)); then
+        echo "pqv-open: --open-target does not take file arguments" >&2
+        exit 2
+    fi
+    curl -sS --fail \
+      -X POST \
+      -H "X-PQV-Token: ${PQV_TOKEN}" \
+      "${base_url}/viewer?window=$(python3 -c 'import sys,urllib.parse; print(urllib.parse.quote(sys.argv[1]))' "$open_target")&${new_query}"
+    exit 0
+fi
+
+if ((${#files[@]} == 0)); then
+    usage >&2
+    exit 2
+fi
+
+for file in "${files[@]}"; do
+    if [[ ! -r "$file" ]]; then
+        echo "pqv-open: file is not readable: $file" >&2
+        exit 1
+    fi
+done
+
+upload_files_json() {
+    local entries_json="[]"
+    local file response
+    for file in "$@"; do
+        response=$(curl -sS --fail \
+          -X POST \
+          -H "X-PQV-Token: ${PQV_TOKEN}" \
+          -H "X-Filename: $(basename "$file")" \
+          --data-binary @"$file" \
+          "${base_url}/upload")
+
+        entries_json=$(python3 - "$entries_json" "$response" <<'PY'
+import json
+import sys
+items = json.loads(sys.argv[1])
+items.append(json.loads(sys.argv[2]))
+print(json.dumps(items))
+PY
+)
+    done
+    python3 - "$entries_json" <<'PY'
+import json
+import sys
+print(json.dumps({"files": json.loads(sys.argv[1])}))
+PY
+}
+
+urlencode() {
+    python3 -c 'import sys,urllib.parse; print(urllib.parse.quote(sys.argv[1]))' "$1"
+}
+
+if [[ "$mode" == "separate" ]]; then
+    for file in "${files[@]}"; do
+        curl -sS --fail \
+          -X POST \
+          -H "X-PQV-Token: ${PQV_TOKEN}" \
+          -H "X-Filename: $(basename "$file")" \
+          --data-binary @"$file" \
+          "${base_url}/open?${new_query}"
+    done
+elif [[ "$mode" == "same-view" ]]; then
+    payload=$(upload_files_json "${files[@]}")
+    curl -sS --fail \
+      -X POST \
+      -H "X-PQV-Token: ${PQV_TOKEN}" \
+      -H "Content-Type: application/json" \
+      --data-binary "$payload" \
+      "${base_url}/view?${new_query}"
+elif [[ "$mode" == "target" ]]; then
+    payload=$(upload_files_json "${files[@]}")
+    curl -sS --fail \
+      -X POST \
+      -H "X-PQV-Token: ${PQV_TOKEN}" \
+      -H "Content-Type: application/json" \
+      --data-binary "$payload" \
+      "${base_url}/queue?window=$(urlencode "$target")"
+else
+    echo "pqv-open: internal error: unknown mode $mode" >&2
+    exit 3
+fi
