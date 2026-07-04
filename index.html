@@ -1535,5 +1535,260 @@ body.pqvResizing,body.pqvResizing *{user-select:none!important}.pqvPopoutWrap .p
 }
 </style>
 
+
+
+<style id="pqvNoSpuriousPlotScrollStyle">
+/* PQV_NO_SPURIOUS_PLOT_SCROLL_V20
+   Keep resize handles inside their containers so they do not enlarge the scrollable page/plot area. */
+.wrap .pqvPlotResizeHandle{
+  right:4px!important;
+  bottom:4px!important;
+  width:16px!important;
+  height:16px!important;
+}
+.wrap .pqvPlotResizeHandle::after{
+  right:2px!important;
+  bottom:2px!important;
+}
+.main.pqvOverlayPanels #controlPanel .pqvResizeEdge.bottom,
+.main.pqvOverlayPanels #marksPanel .pqvResizeEdge.bottom{
+  bottom:0!important;
+  height:10px!important;
+}
+.main.pqvOverlayPanels #controlPanel .pqvResizeCorner.bl,
+.main.pqvOverlayPanels #marksPanel .pqvResizeCorner.bl{
+  bottom:0!important;
+  left:0!important;
+}
+</style>
+
+
+
+<style id="pqvInvisibleResizeHandlesStyle">
+/* PQV_INVISIBLE_RESIZE_HANDLES_V21
+   Keep resize handles functional, but remove their visible guide lines/corners. */
+.pqvResizeEdge,
+.pqvResizeCorner,
+.pqvPlotResizeHandle{
+  opacity:0!important;
+  background:transparent!important;
+}
+.pqvResizeEdge::before,
+.pqvResizeEdge::after,
+.pqvResizeCorner::before,
+.pqvResizeCorner::after,
+.pqvPlotResizeHandle::before,
+.pqvPlotResizeHandle::after{
+  content:""!important;
+  display:none!important;
+  opacity:0!important;
+  background:transparent!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+.pqvResizeEdge:hover::before,
+.pqvResizeEdge:hover::after,
+.pqvResizeEdge.dragging::before,
+.pqvResizeEdge.dragging::after,
+.pqvResizeCorner:hover::before,
+.pqvResizeCorner:hover::after,
+.pqvResizeCorner.dragging::before,
+.pqvResizeCorner.dragging::after,
+.pqvPlotResizeHandle:hover::before,
+.pqvPlotResizeHandle:hover::after,
+.pqvPlotResizeHandle.dragging::before,
+.pqvPlotResizeHandle.dragging::after{
+  display:none!important;
+  opacity:0!important;
+  background:transparent!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+</style>
+
+
+
+<style id="pqvPlotResizeHandleFunctionalInvisibleStyle">
+/* PQV_PLOT_HANDLE_FUNCTIONAL_INVISIBLE_V22
+   The plot resize handle must keep pointer-hit area, but show no guide lines/corner marks. */
+.wrap .pqvPlotResizeHandle{
+  opacity:1!important;
+  display:block!important;
+  pointer-events:auto!important;
+  background:transparent!important;
+  right:0!important;
+  bottom:0!important;
+  width:28px!important;
+  height:28px!important;
+  cursor:nwse-resize!important;
+}
+.wrap .pqvPlotResizeHandle::before,
+.wrap .pqvPlotResizeHandle::after,
+.wrap .pqvPlotResizeHandle:hover::before,
+.wrap .pqvPlotResizeHandle:hover::after,
+.wrap .pqvPlotResizeHandle.dragging::before,
+.wrap .pqvPlotResizeHandle.dragging::after{
+  content:""!important;
+  display:none!important;
+  opacity:0!important;
+  background:transparent!important;
+  border-color:transparent!important;
+  box-shadow:none!important;
+}
+</style>
+
+
+
+<style id="pqvSinglePlotFreeResizeStyle">
+/* PQV_SINGLE_PLOT_FREE_RESIZE_AND_RESET_V23
+   Keep handles invisible, add right/bottom plot hit areas for single-plot modes, and restore default size on Reset layout. */
+.wrap .pqvPlotResizeRightEdge,
+.wrap .pqvPlotResizeBottomEdge{
+  position:absolute!important;
+  z-index:10!important;
+  display:none;
+  opacity:1!important;
+  background:transparent!important;
+  pointer-events:auto!important;
+  touch-action:none!important;
+  user-select:none!important;
+}
+.wrap.pqvModeBandOnly .pqvPlotResizeRightEdge,
+.wrap.pqvModeDosOnly .pqvPlotResizeRightEdge,
+.wrap.pqvModeBandOnly .pqvPlotResizeBottomEdge,
+.wrap.pqvModeDosOnly .pqvPlotResizeBottomEdge{
+  display:block!important;
+}
+.wrap .pqvPlotResizeRightEdge{
+  top:0!important;
+  right:0!important;
+  width:22px!important;
+  height:100%!important;
+  cursor:ew-resize!important;
+}
+.wrap .pqvPlotResizeBottomEdge{
+  left:0!important;
+  right:0!important;
+  bottom:0!important;
+  height:22px!important;
+  cursor:ns-resize!important;
+}
+.wrap .pqvPlotResizeRightEdge::before,
+.wrap .pqvPlotResizeRightEdge::after,
+.wrap .pqvPlotResizeBottomEdge::before,
+.wrap .pqvPlotResizeBottomEdge::after{
+  content:""!important;
+  display:none!important;
+}
+.wrap.pqvModeBandOnly .pqvPlotResizeHandle,
+.wrap.pqvModeDosOnly .pqvPlotResizeHandle{
+  cursor:nwse-resize!important;
+}
+</style>
+<script id="pqvSinglePlotFreeResizeScript">
+/* PQV_SINGLE_PLOT_FREE_RESIZE_AND_RESET_V23 */
+(function(){
+  const DEFAULT_BW=600,DEFAULT_DW=300,DEFAULT_H=600;
+  function byId(id){return document.getElementById(id)}
+  function st(){try{return typeof S!=='undefined'?S:window.S}catch(_e){return window.S}}
+  function mode(){const s=st();return (s&&s.layout&&s.layout.plotMode)||localStorage.getItem('pqv.plotMode')||'both'}
+  function isSingleMode(){const m=mode();return m==='band'||m==='dos'}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  function totalPlotWidth(layout){return (layout.bw||DEFAULT_BW)+(layout.dw||DEFAULT_DW)+14}
+  function savePlotLayout(layout){try{localStorage.setItem('pqv.plotLayout',JSON.stringify({bw:layout.bw,dw:layout.dw,h:layout.h}))}catch(_e){}}
+  function applyPlotLayout(width,height,save){
+    const s=st(),w=byId('wrap');
+    if(!s||!s.layout||!w)return;
+    const oldInner=Math.max(1,(s.layout.bw||DEFAULT_BW)+(s.layout.dw||DEFAULT_DW));
+    if(Number.isFinite(width)){
+      const minInner=(s.layout.minB||240)+(s.layout.minD||120);
+      const newInner=clamp(width-14,minInner,10000);
+      const scale=newInner/oldInner;
+      const bw=Math.max(s.layout.minB||240,Math.round((s.layout.bw||DEFAULT_BW)*scale));
+      const dw=Math.max(s.layout.minD||120,Math.round(newInner-bw));
+      if(typeof setW==='function')setW(bw,dw);
+      else{s.layout.bw=bw;s.layout.dw=dw;w.style.setProperty('--bw',bw+'px');w.style.setProperty('--dw',dw+'px')}
+    }
+    if(Number.isFinite(height)){
+      s.layout.h=clamp(Math.round(height),180,10000);
+      if(typeof setW==='function')setW(s.layout.bw||DEFAULT_BW,s.layout.dw||DEFAULT_DW);
+      else w.style.setProperty('--h',s.layout.h+'px');
+    }
+    if(save)savePlotLayout(s.layout);
+    try{if(typeof draw==='function')requestAnimationFrame(draw)}catch(_e){}
+  }
+  function installEdgeHandle(cls,resizeKind){
+    const wrap=byId('wrap');if(!wrap)return;
+    let h=wrap.querySelector(':scope > .'+cls);
+    if(!h){h=document.createElement('div');h.className=cls;h.title='Drag to resize plot area';wrap.appendChild(h)}
+    if(h.dataset.pqvV23Ready)return;h.dataset.pqvV23Ready='1';
+    h.addEventListener('pointerdown',e=>{
+      if(e.button!==0||!isSingleMode())return;
+      e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();
+      const s=st();if(!s||!s.layout)return;
+      const sx=e.clientX,sy=e.clientY,startW=totalPlotWidth(s.layout),startH=s.layout.h||DEFAULT_H;
+      document.body.classList.add('pqvResizing');try{h.setPointerCapture(e.pointerId)}catch(_e){}
+      function move(ev){
+        const nextW=resizeKind.indexOf('w')>=0?startW+(ev.clientX-sx):null;
+        const nextH=resizeKind.indexOf('h')>=0?startH+(ev.clientY-sy):null;
+        applyPlotLayout(nextW,nextH,false);
+      }
+      function up(ev){
+        const nextW=resizeKind.indexOf('w')>=0?startW+(ev.clientX-sx):null;
+        const nextH=resizeKind.indexOf('h')>=0?startH+(ev.clientY-sy):null;
+        applyPlotLayout(nextW,nextH,true);
+        document.body.classList.remove('pqvResizing');try{h.releasePointerCapture(e.pointerId)}catch(_e){}
+        removeEventListener('pointermove',move,true);removeEventListener('pointerup',up,true);removeEventListener('pointercancel',up,true);
+      }
+      addEventListener('pointermove',move,true);addEventListener('pointerup',up,true);addEventListener('pointercancel',up,true);
+    },true)
+  }
+  function interceptCornerHandle(){
+    const wrap=byId('wrap'),h=wrap&&wrap.querySelector(':scope > .pqvPlotResizeHandle');if(!h||h.dataset.pqvV23CornerReady)return;
+    h.dataset.pqvV23CornerReady='1';
+    h.addEventListener('pointerdown',e=>{
+      if(e.button!==0||!isSingleMode())return;
+      e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();
+      const s=st();if(!s||!s.layout)return;
+      const sx=e.clientX,sy=e.clientY,startW=totalPlotWidth(s.layout),startH=s.layout.h||DEFAULT_H;
+      h.classList.add('dragging');document.body.classList.add('pqvResizing');try{h.setPointerCapture(e.pointerId)}catch(_e){}
+      function move(ev){applyPlotLayout(startW+(ev.clientX-sx),startH+(ev.clientY-sy),false)}
+      function up(ev){applyPlotLayout(startW+(ev.clientX-sx),startH+(ev.clientY-sy),true);h.classList.remove('dragging');document.body.classList.remove('pqvResizing');try{h.releasePointerCapture(e.pointerId)}catch(_e){}removeEventListener('pointermove',move,true);removeEventListener('pointerup',up,true);removeEventListener('pointercancel',up,true)}
+      addEventListener('pointermove',move,true);addEventListener('pointerup',up,true);addEventListener('pointercancel',up,true);
+    },true)
+  }
+  function resetLayoutToDefault(){
+    const s=st();if(s&&s.layout)s.layout.h=DEFAULT_H;
+    try{localStorage.removeItem('pqv.plotLayout')}catch(_e){}
+    if(typeof setW==='function')setW(DEFAULT_BW,DEFAULT_DW);
+    else{const w=byId('wrap');if(w){w.style.setProperty('--bw',DEFAULT_BW+'px');w.style.setProperty('--dw',DEFAULT_DW+'px');w.style.setProperty('--h',DEFAULT_H+'px')}}
+    try{if(typeof draw==='function')requestAnimationFrame(draw)}catch(_e){}
+  }
+  function installResetOverride(){
+    const btn=byId('resetL');if(!btn||btn.dataset.pqvV23ResetReady)return;btn.dataset.pqvV23ResetReady='1';
+    btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();resetLayoutToDefault()},true);
+  }
+  function install(){installEdgeHandle('pqvPlotResizeRightEdge','w');installEdgeHandle('pqvPlotResizeBottomEdge','h');interceptCornerHandle();installResetOverride()}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
+  [300,900,1800,3000].forEach(ms=>setTimeout(install,ms));
+  window.PQVResetPlotLayoutDefault=resetLayoutToDefault;
+})();
+</script>
+
+
+
+<style id="pqvPlotCornerHandleFrontStyle">
+/* PQV_PLOT_CORNER_HANDLE_FRONT_V24
+   Keep the plot corner resize handle above right-edge and bottom-edge hit areas. */
+.wrap .pqvPlotResizeRightEdge,
+.wrap .pqvPlotResizeBottomEdge{
+  z-index:20!important;
+}
+.wrap .pqvPlotResizeHandle{
+  z-index:40!important;
+  pointer-events:auto!important;
+}
+</style>
+
 </body>
 </html>
