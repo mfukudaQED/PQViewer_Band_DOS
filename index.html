@@ -13,24 +13,6 @@
   :root{--uiFont:"Times New Roman",serif;--uiFontWeight:400;--uiFontSize:14px}body,.bar,.panel,.marks,#drop,#msg,#markList,#delta,.modalBox,.tip,.helpTip,button,input,select,textarea,label,summary{font-family:var(--uiFont)!important;font-weight:var(--uiFontWeight)!important;font-size:var(--uiFontSize)!important}.cpTools{display:none!important;border:1px solid #ddd;border-radius:8px;background:#fff;padding:6px 8px;margin:6px 0;gap:6px 8px;align-items:center;flex-wrap:wrap}.cpSearch{width:18em!important}.filterHidden{display:none!important}.cpHint{font-size:12px;color:#555;line-height:1.35;flex-basis:100%}.miniBtn{font-size:12px;padding:2px 5px}.gdSectionToggle,.gdAllToggle{padding:1px 5px;border-radius:5px;font-weight:bold;line-height:1;margin-right:4px}.section.gdSection{cursor:pointer;display:flex;align-items:center;gap:2px;padding:3px 5px;border-radius:6px;background:rgba(255,255,255,.35)}.gdSecHidden{display:none!important}.gdAllToggle{margin-left:8px;font-size:12px}.grid.gdTone{border-radius:8px;padding:7px 8px;margin:5px 0;box-sizing:border-box}.grid.gdTone.gline{padding-top:7px}.subgrp.gdTone{border-color:rgba(0,0,0,.08);background:rgba(255,255,255,.35);padding:6px 8px}.gdTone0{background:#fff4e6}.gdTone1{background:#eef7ff}.gdTone2{background:#f1f8e9}.gdTone3{background:#f7efff}.gdTone4{background:#fff0f5}.gdTone5{background:#eefaf5}.gdTone6{background:#f8f4e8}.gdTone7{background:#eef0ff}.grp.parentTone0{background:#fffaf2}.grp.parentTone1{background:#f5fbff}.grp.parentTone2{background:#f8fcf1}.grp.parentTone3{background:#fbf6ff}.grp.parentTone4{background:#fff7fb}.grp.parentTone5{background:#f5fffb}.grp.parentTone6{background:#fbf8ef}.grp.parentTone7{background:#f6f7ff}.grp[class*="parentTone"]{border-color:rgba(0,0,0,.10)}.grp[class*="parentTone"]>h4{margin:-1px -2px 6px -2px;padding:3px 5px;border-radius:6px;background:rgba(255,255,255,.32)}.analysisBlock{border-color:rgba(0,0,0,.08);background:rgba(255,255,255,.35);padding:6px 8px;margin:0;display:flex;gap:7px 10px;align-items:center;flex-wrap:wrap;flex-basis:100%;box-sizing:border-box}.analysisBlock .analysisSection{margin:0 0 2px 0;width:100%;box-sizing:border-box}.analysisBlock.analysisCollapsed>*:not(.analysisSection){display:none!important}.analysisBlock.analysisCollapsed{cursor:pointer}.analysisBlock.subgrpCollapsed>*:not(.analysisSection){display:none!important}.analysisBlock.subgrpCollapsed{cursor:pointer}.analysisBlock.gdTone0{background:#fff4e6}.analysisBlock.gdTone1{background:#eef7ff}.analysisBlock.gdTone2{background:#f1f8e9}.analysisBlock.gdTone3{background:#f7efff}.analysisBlock.gdTone4{background:#fff0f5}.analysisBlock.gdTone5{background:#eefaf5}.analysisBlock.gdTone6{background:#f8f4e8}.analysisBlock.gdTone7{background:#eef0ff}.analysisBlock .analysisSection.gdTone0,.analysisBlock .analysisSection.gdTone1,.analysisBlock .analysisSection.gdTone2,.analysisBlock .analysisSection.gdTone3,.analysisBlock .analysisSection.gdTone4,.analysisBlock .analysisSection.gdTone5,.analysisBlock .analysisSection.gdTone6,.analysisBlock .analysisSection.gdTone7{background:rgba(255,255,255,.35)}
   .iconBtn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:30px;padding:4px 6px;vertical-align:middle}.iconBtn svg,.iconSelect svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}.iconSelect{display:inline-flex;align-items:center;gap:4px;min-height:30px;padding:0 4px;vertical-align:middle}.iconSelect select{min-width:7.2em;max-width:none;height:30px;line-height:normal;box-sizing:border-box;padding:3px 24px 3px 7px}
 
-/* Product tour spotlight styles */
-.tourBtn{background:#eef6ff;border-color:#8bb8e8;color:#064b8e;font-weight:bold}
-#tourOverlay{position:fixed;inset:0;display:none;z-index:500;pointer-events:none}
-#tourOverlay.show{display:block}
-#tourBackdrop{position:absolute;inset:0;background:rgba(0,0,0,.48);pointer-events:auto}
-#tourSpotlight{position:absolute;border:3px solid #ffd54a;border-radius:12px;box-shadow:0 0 0 9999px rgba(0,0,0,.48),0 0 22px rgba(255,213,74,.95);transition:left .18s ease,top .18s ease,width .18s ease,height .18s ease;pointer-events:none;background:rgba(255,255,255,.05)}
-#tourCard{position:absolute;max-width:min(420px,calc(100vw - 28px));background:#fff;color:#222;border:1px solid #777;border-radius:12px;box-shadow:0 8px 26px rgba(0,0,0,.30);padding:14px 16px;font:14px sans-serif;line-height:1.55;pointer-events:auto;transition:left .18s ease,top .18s ease}
-#tourCard h3{margin:0 0 6px;font-size:17px}
-#tourCard p{margin:6px 0 10px}
-#tourCard .tourMeta{font-size:12px;color:#555;margin-bottom:6px}
-#tourCard .tourBtns{display:flex;gap:8px;justify-content:flex-end;align-items:center;flex-wrap:wrap;margin-top:10px}
-#tourCard .tourBtns button{font-size:13px}
-#tourCard .tourSkip{margin-right:auto}
-#tourProgress{height:5px;background:#eee;border-radius:999px;overflow:hidden;margin:8px 0 4px}
-#tourProgressBar{height:100%;width:0;background:#1976d2;transition:width .18s ease}
-.tourPulse{outline:2px solid #ffd54a!important;outline-offset:2px!important}
-@media (max-width:700px){#tourCard{font-size:13px}.tourBtn{padding:4px 6px}}
-
 </style>
 
   <script>
@@ -1139,82 +1121,6 @@ function helpLang(){const params=new URLSearchParams(location.search);const lang
 function setupHelp(){const box=$('helpTip');document.querySelectorAll('.helpBtn').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();const key=b.dataset.helpKey,lang=helpLang(),item=(HELP_TEXT[lang]&&HELP_TEXT[lang][key])||HELP_TEXT.en[key]||['Help','No description is available.'];const r=b.getBoundingClientRect();box.innerHTML=`<b>${item[0]}</b>${item[1]}`;box.classList.add('show');const x=Math.min(window.innerWidth-380,Math.max(8,r.left));box.style.left=x+'px';box.style.top=(r.bottom+8)+'px'}));document.addEventListener('click',e=>{if(!e.target.closest('.helpBtn')&&!e.target.closest('#helpTip'))box.classList.remove('show')});document.addEventListener('keydown',e=>{if(e.key==='Escape')box.classList.remove('show')})}
 let drag=null;split.onpointerdown=e=>{drag={x:e.clientX,b:S.layout.bw,d:S.layout.dw};split.setPointerCapture(e.pointerId)};split.onpointermove=e=>{if(!drag)return;const dx=e.clientX-drag.x,total=drag.b+drag.d,b=Math.min(total-S.layout.minD,Math.max(S.layout.minB,drag.b+dx));setW(b,total-b)};split.onpointerup=e=>{drag=null;if(split.hasPointerCapture(e.pointerId))split.releasePointerCapture(e.pointerId)};band.addEventListener('wheel',e=>wheel('band',e),{passive:false});dos.addEventListener('wheel',e=>wheel('dos',e),{passive:false});band.onmousemove=e=>{hover('band',e);moveMouse('band',e)};dos.onmousemove=e=>{hover('dos',e);moveMouse('dos',e)};band.onmouseleave=dos.onmouseleave=()=>{tip.style.display='none';clearCursor()};band.onpointerdown=e=>startMouse('band',e);dos.onpointerdown=e=>startMouse('dos',e);band.onpointerup=e=>endMouse('band',e);dos.onpointerup=e=>endMouse('dos',e);band.oncontextmenu=dos.oncontextmenu=e=>e.preventDefault();band.ondblclick=dos.ondblclick=e=>{e.preventDefault();resetZ()};band.onclick=e=>{if(!S.mouse.suppressClick)click('band',e)};dos.onclick=e=>{if(!S.mouse.suppressClick)click('dos',e)};$('target').onchange=()=>{loadTarget();draw()};if($('compactTop'))$('compactTop').onclick=toggleTopCompact;$('resetL').onclick=()=>setW(600,300);$('resetZ').onclick=resetZ;$('clearM').onclick=()=>{all().forEach(s=>s.marks=[]);S.unfold.items.forEach(it=>it.marks=[]);draw()};$('toggleMarks').onclick=()=>{S.showMarks=!S.showMarks;applyVisibility()};$('marksCollapseBtn').onclick=e=>{e.preventDefault();e.stopPropagation();if(S.panelPos==='right'){S.marksCollapsed=!S.marksCollapsed;applyVisibility()}};$('togglePanel').onclick=()=>{S.showPanel=!S.showPanel;applyVisibility()};$('panelCollapseBtn').onclick=e=>{e.preventDefault();e.stopPropagation();if(S.panelPos==='right'){S.panelCollapsed=!S.panelCollapsed;applyVisibility()}};$('grpCollapseAll').onclick=e=>{e.preventDefault();e.stopPropagation();toggleAllGroupCollapsed()};if($('cpFilter'))$('cpFilter').oninput=applyControlPanelFilter;if($('cpFilterClear'))$('cpFilterClear').onclick=()=>{$('cpFilter').value='';applyControlPanelFilter()};$('themePreset').onchange=applyThemePreset;if($('seriesBandRefresh'))$('seriesBandRefresh').onclick=()=>refreshSeriesManagerKind('band');if($('seriesDosRefresh'))$('seriesDosRefresh').onclick=()=>refreshSeriesManagerKind('dos');if($('energyZeroTarget'))$('energyZeroTarget').onchange=updateEnergyTargetUI;if($('fermiInput'))$('fermiInput').addEventListener('change',()=>applyFermi(+$('fermiInput').value));if($('fermiFromMarks'))$('fermiFromMarks').onclick=fermiFromSelectedMark;if($('fermiReset'))$('fermiReset').onclick=resetEnergyTarget;if($('fermiClearOverrides'))$('fermiClearOverrides').onclick=clearEnergyOverrides;if($('crosshairEnable'))$('crosshairEnable').onchange=()=>{S.crosshair.enabled=$('crosshairEnable').checked;draw()};if($('gapAnalyze'))$('gapAnalyze').onclick=analyzeBandGap;if($('gapMark'))$('gapMark').onclick=markBandGap;if($('dosIntegrate'))$('dosIntegrate').onclick=integrateDOSWindow;$('exportPNG').onclick=exportPNG;$('exportBandPNG').onclick=exportBandPNG;$('exportDosPNG').onclick=exportDosPNG;$('exportCfg').onclick=exportCfg;if($('importCfg'))$('importCfg').onclick=()=>$('importF').click();$('importF').onchange=async e=>{if(e.target.files[0])applyCfg(JSON.parse(await e.target.files[0].text()))};if($('shortcutsBtn'))$('shortcutsBtn').onclick=showShortcutHelp;if($('editKpts'))$('editKpts').onclick=openKptEditor;if($('phase4ModalClose'))$('phase4ModalClose').onclick=closePhase4Modal;if($('phase4Modal'))$('phase4Modal').addEventListener('click',e=>{if(e.target===$('phase4Modal'))closePhase4Modal()});document.addEventListener('keydown',handleShortcut);installZoomShortcutFallback();['ufEnable','ufSource','ufColumn','ufRuleSpecies','ufRuleAtoms','ufRuleShells','ufRuleOrbitals','ufSizeMin','ufSizeMax','ufAlphaMin','ufAlphaMax','ufCut','ufGamma','ufNorm','ufColor','ufMarker','ufColorW','ufBg','ufEoff','ufKscale','ufKoff','ufMode','ufBroad','ufKgrid','ufEgrid','ufMapWidth','ufMapKWidth','ufMapUseView','ufMapKmin','ufMapKmax','ufMapEmin','ufMapEmax','ufColorScale','ufColorPower','ufCmap','ufMapAlpha','ufMapGain','ufColorbarShow','ufColorbarLabel','ufGroup'].forEach(id=>$(id).addEventListener('change',()=>{ufRead();applyIntensityMapPreset();ufClearWeightCache();draw()}));if($('ufExportMeta'))$('ufExportMeta').onclick=exportUnfoldMeta;$('ufTarget').onchange=()=>{S.unfold.active=$('ufTarget').value;ufWrite();draw()};$('ufSumMake').onclick=createUnfoldSumFromSelection;$('pdosSumMake').onclick=createPdosSumFromSelection;['lc','lineWidth','ld','lineDashLength','lineGapLength','lineDotLength','spinMode','ps','pr','legendText'].forEach(id=>$(id).addEventListener('change',applyStyle));['allLW'].forEach(id=>$(id).addEventListener('change',applyGlobal));['panelPos','bgColor','bPlotBgColor','dPlotBgColor','textColor','bLegendShow','bLegendSize','bLegendBox','bLegendW','bLegendH','bLegendPad','bLegendPosX','bLegendPosY','bLegendBoxColor','bLegendBoxAlpha','dLegendShow','dLegendSize','dLegendBox','dLegendW','dLegendH','dLegendPad','dLegendPosX','dLegendPosY','dLegendBoxColor','dLegendBoxAlpha','yGridSync','bYGrid','bYGridColor','bYGridWidth','bYGridDash','bYGridDashLength','bYGridGapLength','bYGridDotLength','dYGrid','dYGridColor','dYGridWidth','dYGridDash','dYGridDashLength','dYGridGapLength','dYGridDotLength','yZeroLineSync','bZeroLineShow','bZeroLineColor','bZeroLineDash','bZeroLineWidth','bZeroLineDashLength','bZeroLineGapLength','bZeroLineDotLength','dYZeroLineShow','dYZeroLineColor','dYZeroLineDash','dYZeroLineWidth','dYZeroLineDashLength','dYZeroLineGapLength','dYZeroLineDotLength','zeroLineShow','zeroLineColor','zeroLineDash','zeroLineWidth','zeroLineDashLength','zeroLineGapLength','zeroLineDotLength','dZeroLineShow','dZeroLineColor','dZeroLineDash','dZeroLineWidth','dZeroLineDashLength','dZeroLineGapLength','dZeroLineDotLength','bKLabelShow','bKLabelColor','bKLabelDash','bKLabelWidth','bKLabelDashLength','bKLabelGapLength','bKLabelDotLength','bGridDashLength','bGridGapLength','bGridDotLength','dGridDashLength','dGridGapLength','dGridDotLength','yGridDashLength','yGridGapLength','yGridDotLength','bTickStep','dTickStep','yTickStep','bMinorTicks','dMinorTicks','yMinorTicks','bMinorTickStep','dMinorTickStep','yMinorTickStep','bTickDec','dTickDec','yTickDec','bGrid','dGrid','yGrid','bGridColor','dGridColor','yGridColor','bGridDash','dGridDash','yGridDash','bGridWidth','dGridWidth','yGridWidth','tfs','lfs','ff','uiFont','uiFontSize','ymin','ymax','dxmin','dxmax','bxl','byl','dxl','dyl','bxlS','bylS','dxlS','dylS','bxt','byt','dxt','dyt','zoom'].forEach(id=>$(id).addEventListener('change',()=>{readGraph(id);draw()}));['dragenter','dragover'].forEach(n=>document.addEventListener(n,e=>{e.preventDefault();e.stopPropagation();$('drop').classList.add('drag');$('plots').classList.add('drag')}));['dragleave','drop'].forEach(n=>document.addEventListener(n,e=>{e.preventDefault();e.stopPropagation();$('drop').classList.remove('drag');$('plots').classList.remove('drag')}));document.addEventListener('drop',e=>{if(e.dataTransfer?.files?.length)files(e.dataTransfer.files)});window.onresize=draw;setupControlPanelFilePicker();setupGroupCollapse();applyInitialControlGroupCollapse();setupUfSubsectionCollapse();setupPanelLabelLiveControls();setupHelp();write();updateUI();updateSeriesManager();updateDosIntTargets();ufWrite();ufUpdateModeUI();applyIntensityMapPreset();setW(600,300);draw();
 </script>
-
-
-<script>
-/* Product tour logic with stable numbering, number jump, and overview-only Graph Details */
-(function(){
-  const TOUR_I18N={
-    ja:{skip:'終了',prev:'戻る',next:'次へ',done:'完了',stepLabel:'ステップ',jumpTitle:'説明番号へ移動',steps:[
-      {sel:'#drop',title:'ファイルを読み込む',text:'ここに BAND、DOS、PDOS、unfold、OpenMX input、config JSON をドラッグ&ドロップします。まずはデータを読み込む入口です。'},
-      {sel:'#plots',title:'Band と DOS を確認する',text:'左が Band、右が DOS です。ホイールでズーム、Shift+ホイールでパン、左ドラッグで矩形ズーム、右ドラッグでパンできます。'},
-      {sel:'#split',title:'Band/DOS の幅を調整する',text:'中央の分割バーをドラッグすると、Band パネルと DOS パネルの表示幅を調整できます。'},
-      {sel:'#marksPanel',title:'マーク点を管理する',text:'クリックで選択した点は Marked points に記録されます。2点を選ぶと Δk や ΔE を確認できます。パネルは折りたたみ可能です。'},
-      {sel:'#controlPanel',title:'Control Panel を使う',text:'表示系列、線種、凡例、解析、unfold、グラフ詳細などはここで設定します。右上の position で下配置にも変更できます。'},
-      {sel:'#vis',box:'grp',title:'Series Visibility',text:'読み込んだ Band/DOS group の表示・非表示を切り替えます。比較したい系列だけを残すと解析しやすくなります。'},
-      {sel:'#seriesMgrBand',box:'grp',title:'Series Manager',text:'Band と DOS の Series Manager は分離されています。Band/DOS それぞれで系列名の変更、削除、描画順序変更、Refresh、also vary を操作できます。'},
-      {sel:'#seriesStylePanel',title:'線・点スタイルを編集する',text:'このパネルで Target を選び、色、線幅、線種、点種、凡例テキストを編集します。DOS spin の色分けもここで制御します。'},
-      {sel:'#analysisPanel',title:'解析機能を使う',text:'Band Gap Analysis、DOS/PDOS Integration、Energy Zero、crosshair をまとめた領域です。VBM/CBM マークや DOS 積分に使います。'},
-      {sel:'#ufPanel',title:'Unfolded Band',text:'unfold ファイルを読み込むと表示されます。scatter、intensity map、rule selection、colorbar などを設定できます。未読込時はスキップされます。',optional:true},
-      {sel:'#pdosBuilderPanel',title:'PDOS Sum Builder',text:'複数 PDOS を読み込むと表示されます。選択した PDOS から手動で sum を作成します。未表示時はスキップされます。',optional:true},
-      {custom:'graphDetails',noExpandSelf:true,title:'Graph Details の概要',text:'Graph Details では、軸ラベル、tick、grid、zero line、凡例、panel label、色・フォントなど図の細部を調整できます。このツアーではパネルを展開せず概要だけ説明します。'},
-      {custom:'colorsFont',title:'色・フォント・テーマ',text:'custom/light/dark の theme、背景色、plot area 色、text/axis 色、UI font、グラフ font を変更できます。'},
-      {selAll:['#pngExportRangeStart','#exportPNG','#exportBandPNG','#exportDosPNG'],title:'PNG を書き出す',text:'PNG scale で解像度を選び、全体・Bandのみ・DOSのみの PNG を書き出せます。'},
-      {sel:'#exportCfg',title:'設定を保存する',text:'現在のスタイル、レイアウト、表示設定を config JSON として保存し、後で復元できます。'},
-      {sel:'#shortcutsBtn',title:'ショートカットを見る',text:'クリックするとキーボードとマウス操作の一覧を確認できます。? キーでも開けます。'}
-    ]},
-    en:{skip:'Exit',prev:'Back',next:'Next',done:'Done',stepLabel:'Step',jumpTitle:'Jump to step',steps:[
-      {sel:'#drop',title:'Load files',text:'Drag and drop BAND, DOS, PDOS, unfold, OpenMX input, or config JSON files here.'},
-      {sel:'#plots',title:'Inspect Band and DOS',text:'Band is on the left and DOS is on the right. Use wheel zoom, Shift+wheel pan, left-drag rectangle zoom, and right-drag pan.'},
-      {sel:'#split',title:'Resize Band/DOS panels',text:'Drag the center splitter to adjust the relative widths of the Band and DOS panels.'},
-      {sel:'#marksPanel',title:'Manage marked points',text:'Clicked points are recorded in Marked points. Select two points to inspect Δk and ΔE.'},
-      {sel:'#controlPanel',title:'Use the Control Panel',text:'Set series visibility, line styles, legends, analysis, unfold settings, and graph details here.'},
-      {sel:'#vis',box:'grp',title:'Series Visibility',text:'Toggle loaded Band/DOS groups on or off. Keeping only relevant series makes comparisons easier.'},
-      {sel:'#seriesMgrBand',box:'grp',title:'Series Manager',text:'Band and DOS Series Managers are separated. Rename, delete, reorder, refresh, and apply also-vary options independently.'},
-      {sel:'#seriesStylePanel',title:'Edit line and point styles',text:'Choose a Target and edit color, width, line style, marker, legend text, and DOS spin colors.'},
-      {sel:'#analysisPanel',title:'Use analysis tools',text:'Band Gap Analysis, DOS/PDOS Integration, Energy Zero, and crosshair tools are grouped here.'},
-      {sel:'#ufPanel',title:'Unfolded Band',text:'Shown after an unfold file is loaded. Configure scatter, intensity map, rule selection, and colorbar settings. Skipped when hidden.',optional:true},
-      {sel:'#pdosBuilderPanel',title:'PDOS Sum Builder',text:'Shown after multiple PDOS files are loaded. Create manual sums from selected PDOS groups. Skipped when hidden.',optional:true},
-      {custom:'graphDetails',noExpandSelf:true,title:'Graph Details overview',text:'Graph Details controls axes, ticks, grids, zero lines, legends, panel labels, colors, and fonts. This tour keeps the panel collapsed and gives only an overview.'},
-      {custom:'colorsFont',title:'Colors, fonts, and theme',text:'Switch custom/light/dark themes and edit background, plot area, text/axis, UI font, and graph font.'},
-      {selAll:['#pngExportRangeStart','#exportPNG','#exportBandPNG','#exportDosPNG'],title:'Export PNG',text:'Choose PNG scale and export the full view, Band-only, or DOS-only PNG files.'},
-      {sel:'#exportCfg',title:'Save settings',text:'Export the current style, layout, and visibility settings as a config JSON that can be restored later.'},
-      {sel:'#shortcutsBtn',title:'View shortcuts',text:'Open the keyboard and mouse shortcut list. You can also press the ? key.'}
-    ]}
-  };
-  const byId=id=>document.getElementById(id);
-  let tourIndex=0,lastFocus=null,tourActiveSteps=[];
-  function lang(){const q=new URLSearchParams(location.search).get('lang');if(q&&TOUR_I18N[q])return q;return /^ja/i.test(navigator.language||'')?'ja':'en'}
-  function tr(){return TOUR_I18N[lang()]||TOUR_I18N.en}
-  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
-  function isActuallyVisible(el){if(!el)return false;const cs=getComputedStyle(el);if(cs.display==='none'||cs.visibility==='hidden')return false;const r=el.getBoundingClientRect();return r.width>0&&r.height>0}
-  function graphDetailsEl(){return [...document.querySelectorAll('#controlPanel .grp')].find(g=>/^Graph Details$/.test((g.querySelector('h4')?.textContent||'').replace(/[▶▼]/g,'').replace(/Subsections|Collapse subsections|Expand subsections/g,'').trim()))||document.querySelector('span.section.gdSection')}
-  function colorsFontEl(){const sec=[...document.querySelectorAll('span.section')].find(s=>/\[Colors\/Font\]/.test(s.textContent||''));return sec?(sec.closest('.grid')||sec):($('#themePreset')?$('themePreset').closest('.grid')||$('themePreset'):null)}
-  function rawElements(step){if(step.custom==='graphDetails')return [graphDetailsEl()].filter(Boolean);if(step.custom==='colorsFont')return [colorsFontEl()].filter(Boolean);if(step.selAll)return step.selAll.map(s=>document.querySelector(s)).filter(Boolean);const el=step.sel?document.querySelector(step.sel):null;return el?[el]:[]}
-  function boxElement(el,step){if(!el)return null;if(step.box==='grp')return el.closest('.grp')||el;return el}
-  function stepElements(step){return rawElements(step).map(el=>boxElement(el,step)).filter(Boolean)}
-  function stepAvailable(step){const els=stepElements(step);if(!els.length)return false;if(step.optional&&!els.some(isActuallyVisible))return false;return true}
-  function activeSteps(){return tourActiveSteps.length?tourActiveSteps:tr().steps.filter(stepAvailable)}
-  function applyButtonLabels(last){const t=tr();byId('tourSkip').textContent=t.skip;byId('tourPrev').textContent=t.prev;byId('tourNext').textContent=last?t.done:t.next;byId('tourPrev').disabled=tourIndex<=0}
-  function unionRect(els){let r=null;els.forEach(el=>{const b=el.getBoundingClientRect();if(!b.width&&!b.height)return;r=r?{left:Math.min(r.left,b.left),top:Math.min(r.top,b.top),right:Math.max(r.right,b.right),bottom:Math.max(r.bottom,b.bottom)}:{left:b.left,top:b.top,right:b.right,bottom:b.bottom}});if(!r)return null;return{left:r.left,top:r.top,width:r.right-r.left,height:r.bottom-r.top,right:r.right,bottom:r.bottom}}
-  function openCollapsedParents(el,step){let p=el.parentElement;while(p){if(p.tagName==='DETAILS')p.open=true;if(p.classList&&p.classList.contains('grpCollapsed')){p.classList.remove('grpCollapsed');const b=p.querySelector('.grpToggle');if(b)b.textContent='▼'}if(p.classList&&p.classList.contains('gdSecCollapsed')){p.classList.remove('gdSecCollapsed');const b=p.querySelector('.gdSectionToggle');if(b)b.textContent='▼'}p=p.parentElement}if(!(step&&step.noExpandSelf)){if(el.classList&&el.classList.contains('grpCollapsed')){el.classList.remove('grpCollapsed');const b=el.querySelector('.grpToggle');if(b)b.textContent='▼'}if(el.classList&&el.classList.contains('gdSecCollapsed')){el.classList.remove('gdSecCollapsed');const b=el.querySelector('.gdSectionToggle');if(b)b.textContent='▼'}}}
-  function placeCard(rect){const card=byId('tourCard'),gap=12;let left=rect.right+gap,top=rect.top;if(left+card.offsetWidth>window.innerWidth-8){left=Math.max(8,rect.left-card.offsetWidth-gap)}if(top+card.offsetHeight>window.innerHeight-8){top=Math.max(8,window.innerHeight-card.offsetHeight-8)}card.style.left=clamp(left,8,window.innerWidth-card.offsetWidth-8)+'px';card.style.top=clamp(top,8,window.innerHeight-card.offsetHeight-8)+'px'}
-  function setJumpHandler(total){const inp=byId('tourStepJump');if(!inp)return;inp.onchange=()=>{const n=parseInt(inp.value,10);if(isFinite(n)){tourIndex=clamp(n-1,0,total-1);renderTour()}};inp.onkeydown=e=>{if(e.key==='Enter'){inp.blur();e.preventDefault()}}}
-  function paintSpotlight(step,steps){const els=stepElements(step);if(!els.length)return;document.querySelectorAll('.tourPulse').forEach(x=>x.classList.remove('tourPulse'));els.forEach(el=>el.classList.add('tourPulse'));const rect=unionRect(els);if(!rect)return;const spot=byId('tourSpotlight'),pad=8;spot.style.left=clamp(rect.left-pad,4,window.innerWidth-8)+'px';spot.style.top=clamp(rect.top-pad,4,window.innerHeight-8)+'px';spot.style.width=Math.max(24,Math.min(rect.width+pad*2,window.innerWidth-8))+'px';spot.style.height=Math.max(24,Math.min(rect.height+pad*2,window.innerHeight-8))+'px';byId('tourTitle').textContent=step.title;byId('tourText').textContent=step.text;const total=steps.length,t=tr();byId('tourStepMeta').innerHTML=`${t.stepLabel} <input id="tourStepJump" type="number" min="1" max="${total}" value="${tourIndex+1}" title="${t.jumpTitle}" style="width:3.8em"> / ${total}`;setJumpHandler(total);byId('tourProgressBar').style.width=((tourIndex+1)/total*100)+'%';applyButtonLabels(tourIndex>=total-1);placeCard(rect)}
-  function renderTour(){const steps=activeSteps();if(!steps.length)return endTour();tourIndex=clamp(tourIndex,0,steps.length-1);const step=steps[tourIndex],els=stepElements(step);if(!els.length){tourIndex=clamp(tourIndex+1,0,steps.length-1);return renderTour()}openCollapsedParents(els[0],step);els[0].scrollIntoView({behavior:'smooth',block:'center',inline:'center'});setTimeout(()=>paintSpotlight(step,steps),220);setTimeout(()=>paintSpotlight(step,steps),520)}
-  function startTour(){lastFocus=document.activeElement;tourActiveSteps=tr().steps.filter(stepAvailable);const ov=byId('tourOverlay');ov.classList.add('show');ov.setAttribute('aria-hidden','false');tourIndex=0;applyButtonLabels(false);renderTour();byId('tourNext').focus()}
-  function endTour(){const ov=byId('tourOverlay');ov.classList.remove('show');ov.setAttribute('aria-hidden','true');document.querySelectorAll('.tourPulse').forEach(x=>x.classList.remove('tourPulse'));tourActiveSteps=[];if(lastFocus&&lastFocus.focus)lastFocus.focus()}
-  function nextTour(){const steps=activeSteps();if(tourIndex>=steps.length-1)endTour();else{tourIndex++;renderTour()}}
-  function prevTour(){tourIndex=Math.max(0,tourIndex-1);renderTour()}
-  function bindTour(){const btn=byId('productTourBtn');if(!btn||btn.dataset.boundTour)return;btn.dataset.boundTour='1';btn.addEventListener('click',startTour);byId('tourNext').addEventListener('click',nextTour);byId('tourPrev').addEventListener('click',prevTour);byId('tourSkip').addEventListener('click',endTour);byId('tourBackdrop').addEventListener('click',endTour);window.addEventListener('resize',()=>{if(byId('tourOverlay').classList.contains('show'))renderTour()});document.addEventListener('keydown',e=>{if(!byId('tourOverlay').classList.contains('show'))return;if(e.key==='Escape'){endTour();e.preventDefault()}else if(e.key==='ArrowRight'||e.key==='Enter'){if(document.activeElement&&document.activeElement.id==='tourStepJump')return;nextTour();e.preventDefault()}else if(e.key==='ArrowLeft'){prevTour();e.preventDefault()}})}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindTour);else bindTour();
-})();
-</script>
-
-
-
-
-
 <style id="pqvFinalOverlayStyle">
 /* PQV_FINAL_OVERLAY_V12: PQCrystalAnalyzer-like top-right panels and popouts. */
 :root{--uiFont:"Fredoka","Nunito",sans-serif;--uiFontWeight:400;--uiFontSize:14px;--pqvOverlayPanelTop:52px;--pqvOverlayPanelRight:12px;--pqvOverlayPanelBottom:12px;--pqvControlPanelW:25vw;--pqvMarksPanelW:25vw;--pqvControlPanelMinW:420px;--pqvMarksPanelMinW:360px}
@@ -1283,204 +1189,6 @@ body{font-family:var(--uiFont)!important;background:#fff}.main.pqvOverlayPanels{
   z-index:5000!important;
 }
 </style>
-
-
-
-<style id="pqvTourZIndexFixStyle">
-/* PQV_TOUR_ZINDEX_FIX_V15
-   Product tour must be above overlay panels and above help popovers.
-   The original tour overlay used z-index:500, while the overlay panels use z-index:1601. */
-#tourOverlay.show,
-#tourOverlay{
-  z-index:7000!important;
-}
-#tourBackdrop,
-#tourSpotlight,
-#tourCard{
-  z-index:7001!important;
-}
-#tourCard{
-  position:fixed!important;
-}
-</style>
-
-
-
-<style id="pqvTourRuntimeFixV16Style">
-/* PQV_TOUR_RUNTIME_FIX_V16: keep tour above panels and make hidden targets temporarily measurable. */
-#tourOverlay.show,#tourOverlay{z-index:7000!important;}
-#tourBackdrop,#tourSpotlight,#tourCard{z-index:7001!important;}
-#tourCard{position:fixed!important;}
-</style>
-<script id="pqvTourRuntimeFixV16Script">
-/* PQV_TOUR_RUNTIME_FIX_V16
-   Repairs tour flow for overlay panels:
-   - Tour starts with Control Panel and Marked points closed.
-   - Panels are opened only for their own explanation steps.
-   - Step targets are resolved after the pre-step panel state is applied, so hidden panels do not break step numbering.
-   - Capture-phase handlers stop the original tour handlers from running in parallel. */
-(function(){
-  "use strict";
-  function byId(id){return document.getElementById(id);}
-  function appState(){try{return (typeof S!=='undefined')?S:window.S;}catch(_e){return window.S;}}
-  function apply(){try{if(typeof applyVisibility==='function')applyVisibility();}catch(_e){}}
-  function setPanels(controlOpen,marksOpen){
-    const st=appState();
-    if(st){
-      st.panelPos='right';
-      st.showPanel=!!controlOpen;
-      st.showMarks=!!marksOpen;
-      st.panelCollapsed=false;
-      st.marksCollapsed=false;
-      apply();
-    }else{
-      const c=byId('controlPanel'),m=byId('marksPanel');
-      if(c)c.classList.toggle('hidden',!controlOpen);
-      if(m)m.classList.toggle('hidden',!marksOpen);
-    }
-  }
-  function closePanels(){setPanels(false,false);}
-  function openControl(){setPanels(true,false);}
-  function openMarks(){setPanels(false,true);}
-  function lang(){return /^ja/i.test((new URLSearchParams(location.search).get('lang')||navigator.language||''))?'ja':'en';}
-  const I18N={
-    ja:{exit:'終了',prev:'戻る',next:'次へ',done:'完了',step:'ステップ',steps:[
-      {sel:'#productTourBtn',title:'Tour ボタン',text:'Tour はここから開始します。Tour 開始時は Control Panel と Marked points panel を閉じ、必要な説明ステップでだけ開きます。',pre:closePanels},
-      {sel:'#pqvMarksPanelIcon',title:'Selection / Marked points ボタン',text:'通常クリックで Marked points panel を開閉します。Ctrl/Cmd + クリックでリアルタイム同期の別ウィンドウを開き、元 panel は閉じます。',pre:closePanels},
-      {sel:'#pqvControlPanelIcon',title:'Control Panel ボタン',text:'歯車ボタンで Control Panel を開閉します。Ctrl/Cmd + クリックでリアルタイム同期の別ウィンドウを開きます。',pre:closePanels},
-      {sel:'#drop',title:'ファイル読み込み',text:'BAND、DOS、PDOS、unfold、OpenMX input、config JSON をここにドラッグ&ドロップします。',pre:closePanels},
-      {sel:'#plots',title:'プロット領域',text:'Band と DOS を確認します。ホイールズーム、Shift+ホイールパン、左ドラッグ矩形ズーム、右ドラッグパンが使えます。',pre:closePanels},
-      {sel:'#split',title:'Band / DOS 幅調整',text:'中央の分割バーをドラッグして Band と DOS の幅を調整します。',pre:closePanels},
-      {sel:'#controlPanel',title:'Control Panel',text:'系列、線種、凡例、解析、unfold、Graph Details などを設定します。このステップで初めて Control Panel を開きます。',pre:openControl},
-      {sel:'#vis',box:'grp',title:'Series Visibility',text:'読み込んだ Band/DOS 系列の表示・非表示を切り替えます。',pre:openControl},
-      {sel:'#seriesStylePanel',title:'Series / Line / Point Controls',text:'Target を選び、線色、線幅、線種、点種、凡例テキストなどを編集します。',pre:openControl},
-      {sel:'#analysisPanel',title:'Analysis',text:'Band gap、DOS/PDOS integration、energy shift、crosshair などの解析機能を操作します。',pre:openControl},
-      {sel:'#marksPanel',title:'Selection / Marked points panel',text:'選択点を一覧表示し、2点の差分を確認できます。このステップでは Marked points panel を開きます。',pre:openMarks},
-      {sel:'#exportCfg',title:'設定保存',text:'現在の表示設定を config JSON として保存できます。',pre:closePanels},
-      {sel:'#shortcutsBtn',title:'Shortcuts',text:'キーボードとマウス操作の一覧を表示します。? キーでも開けます。',pre:closePanels}
-    ]},
-    en:{exit:'Exit',prev:'Back',next:'Next',done:'Done',step:'Step',steps:[
-      {sel:'#productTourBtn',title:'Tour button',text:'Start the tour here. When the tour starts, both panels are closed and are opened only on their explanation steps.',pre:closePanels},
-      {sel:'#pqvMarksPanelIcon',title:'Selection / Marked points button',text:'Click to toggle Marked points. Ctrl/Cmd-click opens a real-time linked popout and closes the original panel.',pre:closePanels},
-      {sel:'#pqvControlPanelIcon',title:'Control Panel button',text:'Click the gear button to toggle Control Panel. Ctrl/Cmd-click opens a real-time linked popout.',pre:closePanels},
-      {sel:'#drop',title:'Load files',text:'Drag and drop BAND, DOS, PDOS, unfold, OpenMX input, or config JSON files here.',pre:closePanels},
-      {sel:'#plots',title:'Plot area',text:'Inspect Band and DOS. Use wheel zoom, Shift+wheel pan, left-drag rectangle zoom, and right-drag pan.',pre:closePanels},
-      {sel:'#split',title:'Resize Band / DOS',text:'Drag the splitter to adjust the relative width of Band and DOS panels.',pre:closePanels},
-      {sel:'#controlPanel',title:'Control Panel',text:'Configure series, styles, legends, analysis, unfold, and Graph Details. The Control Panel opens at this step.',pre:openControl},
-      {sel:'#vis',box:'grp',title:'Series Visibility',text:'Toggle loaded Band/DOS series on and off.',pre:openControl},
-      {sel:'#seriesStylePanel',title:'Series / Line / Point Controls',text:'Select a target and edit line color, width, style, markers, and legend text.',pre:openControl},
-      {sel:'#analysisPanel',title:'Analysis',text:'Use band gap, DOS/PDOS integration, energy shift, and crosshair tools.',pre:openControl},
-      {sel:'#marksPanel',title:'Selection / Marked points panel',text:'Review selected points and compare two-point differences. Marked points opens at this step.',pre:openMarks},
-      {sel:'#exportCfg',title:'Save settings',text:'Export the current display settings as a config JSON file.',pre:closePanels},
-      {sel:'#shortcutsBtn',title:'Shortcuts',text:'Open the keyboard and mouse shortcut list. You can also press the ? key.',pre:closePanels}
-    ]}
-  };
-  function tr(){return I18N[lang()]||I18N.en;}
-  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
-  function pickElement(step){
-    const el=document.querySelector(step.sel);
-    return step.box==='grp'&&el?(el.closest('.grp')||el):el;
-  }
-  function visibleRect(el){
-    if(!el)return null;
-    const r=el.getBoundingClientRect();
-    if(!r.width||!r.height)return null;
-    return r;
-  }
-  let idx=0,steps=[],lastFocus=null;
-  function buttonLabels(){
-    const t=tr();
-    byId('tourSkip').textContent=t.exit;
-    byId('tourPrev').textContent=t.prev;
-    byId('tourNext').textContent=idx>=steps.length-1?t.done:t.next;
-    byId('tourPrev').disabled=idx<=0;
-  }
-  function placeCard(rect){
-    const card=byId('tourCard'),gap=12;
-    let left=rect.right+gap,top=rect.top;
-    if(left+card.offsetWidth>innerWidth-8)left=Math.max(8,rect.left-card.offsetWidth-gap);
-    if(top+card.offsetHeight>innerHeight-8)top=Math.max(8,innerHeight-card.offsetHeight-8);
-    card.style.left=clamp(left,8,Math.max(8,innerWidth-card.offsetWidth-8))+'px';
-    card.style.top=clamp(top,8,Math.max(8,innerHeight-card.offsetHeight-8))+'px';
-  }
-  function paint(step,el){
-    const rect=visibleRect(el);
-    if(!rect)return;
-    const spot=byId('tourSpotlight'),pad=8;
-    spot.style.left=clamp(rect.left-pad,4,innerWidth-8)+'px';
-    spot.style.top=clamp(rect.top-pad,4,innerHeight-8)+'px';
-    spot.style.width=Math.max(24,Math.min(rect.width+pad*2,innerWidth-8))+'px';
-    spot.style.height=Math.max(24,Math.min(rect.height+pad*2,innerHeight-8))+'px';
-    byId('tourTitle').textContent=step.title;
-    byId('tourText').textContent=step.text;
-    byId('tourStepMeta').textContent=tr().step+' '+(idx+1)+' / '+steps.length;
-    byId('tourProgressBar').style.width=((idx+1)/steps.length*100)+'%';
-    buttonLabels();
-    placeCard(rect);
-  }
-  function render(){
-    if(!steps.length)return end();
-    idx=clamp(idx,0,steps.length-1);
-    const step=steps[idx];
-    if(step.pre)step.pre();
-    setTimeout(()=>{
-      const el=pickElement(step);
-      if(!el){next();return;}
-      if(el.tagName==='DETAILS')el.open=true;
-      let p=el.parentElement;
-      while(p){
-        if(p.tagName==='DETAILS')p.open=true;
-        if(p.classList&&p.classList.contains('grpCollapsed')){p.classList.remove('grpCollapsed');const b=p.querySelector('.grpToggle');if(b)b.textContent='▼';}
-        p=p.parentElement;
-      }
-      el.scrollIntoView({behavior:'smooth',block:'center',inline:'center'});
-      setTimeout(()=>paint(step,el),220);
-      setTimeout(()=>paint(step,el),520);
-    },80);
-  }
-  function start(){
-    lastFocus=document.activeElement;
-    closePanels();
-    steps=tr().steps.filter(s=>document.querySelector(s.sel));
-    idx=0;
-    const ov=byId('tourOverlay');
-    ov.classList.add('show');
-    ov.setAttribute('aria-hidden','false');
-    bindNav();
-    render();
-  }
-  function end(){
-    const ov=byId('tourOverlay');
-    if(ov){ov.classList.remove('show');ov.setAttribute('aria-hidden','true');}
-    document.querySelectorAll('.tourPulse').forEach(e=>e.classList.remove('tourPulse'));
-    if(lastFocus&&lastFocus.focus)lastFocus.focus();
-  }
-  function next(){idx>=steps.length-1?end():(idx++,render());}
-  function prev(){idx=Math.max(0,idx-1);render();}
-  function bindNav(){
-    if(byId('tourNext')&&!byId('tourNext').dataset.pqvV16){
-      byId('tourNext').dataset.pqvV16='1';
-      byId('tourNext').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();next();},true);
-      byId('tourPrev').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();prev();},true);
-      byId('tourSkip').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();end();},true);
-      byId('tourBackdrop').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();end();},true);
-      document.addEventListener('keydown',e=>{const ov=byId('tourOverlay');if(!ov||!ov.classList.contains('show'))return;if(e.key==='Escape'){e.preventDefault();end();}else if(e.key==='ArrowRight'||e.key==='Enter'){e.preventDefault();next();}else if(e.key==='ArrowLeft'){e.preventDefault();prev();}},true);
-      addEventListener('resize',()=>{const ov=byId('tourOverlay');if(ov&&ov.classList.contains('show'))render();});
-    }
-  }
-  function install(){
-    const btn=byId('productTourBtn');
-    if(!btn||btn.dataset.pqvTourRuntimeFixV16)return;
-    btn.dataset.pqvTourRuntimeFixV16='1';
-    btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();start();},true);
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
-  [400,1200,2500].forEach(ms=>setTimeout(install,ms));
-})();
-</script>
-
-
-
 <style id="pqvResizeAndPlotModeStyle">
 /* PQV_RESIZE_AND_PLOT_MODE_V18 */
 :root{--pqvControlPanelH:72vh;--pqvMarksPanelH:58vh}
@@ -1789,6 +1497,319 @@ body.pqvResizing,body.pqvResizing *{user-select:none!important}.pqvPopoutWrap .p
   pointer-events:auto!important;
 }
 </style>
+
+
+
+<style id="pqvProductTourCleanStyle">
+/* PQV_PRODUCT_TOUR_CLEAN_V1
+   Single product-tour implementation. Older tour styles/scripts are removed. */
+.tourBtn{
+  background:rgba(238,246,255,.94);
+  border-color:#8bb8e8;
+  color:#064b8e;
+  font-weight:700;
+}
+#tourOverlay{
+  position:fixed;
+  inset:0;
+  display:none;
+  z-index:7000!important;
+  pointer-events:none;
+}
+#tourOverlay.show{
+  display:block;
+}
+#tourBackdrop{
+  position:fixed;
+  inset:0;
+  background:transparent;
+  pointer-events:auto;
+  z-index:7001!important;
+}
+#tourSpotlight{
+  position:fixed!important;
+  border:3px solid #ffd54a;
+  border-radius:12px;
+  box-shadow:0 0 0 9999px rgba(0,0,0,.48),0 0 22px rgba(255,213,74,.95);
+  pointer-events:none;
+  background:transparent;
+  transition:left .18s ease,top .18s ease,width .18s ease,height .18s ease;
+  z-index:7002!important;
+}
+#tourCard{
+  position:fixed!important;
+  max-width:min(420px,calc(100vw - 28px));
+  background:#fff;
+  color:#222;
+  border:1px solid #777;
+  border-radius:12px;
+  box-shadow:0 8px 26px rgba(0,0,0,.30);
+  padding:14px 16px;
+  font:14px sans-serif;
+  line-height:1.55;
+  pointer-events:auto;
+  transition:left .18s ease,top .18s ease;
+  z-index:7003!important;
+}
+#tourCard h3{
+  margin:0 0 6px;
+  font-size:17px;
+}
+#tourCard p{
+  margin:6px 0 10px;
+}
+#tourCard .tourMeta{
+  font-size:12px;
+  color:#555;
+  margin-bottom:6px;
+}
+#tourCard .tourBtns{
+  display:flex;
+  gap:8px;
+  justify-content:flex-end;
+  align-items:center;
+  flex-wrap:wrap;
+  margin-top:10px;
+}
+#tourCard .tourBtns button{
+  font-size:13px;
+}
+#tourCard .tourSkip{
+  margin-right:auto;
+}
+#tourProgress{
+  height:5px;
+  background:#eee;
+  border-radius:999px;
+  overflow:hidden;
+  margin:8px 0 4px;
+}
+#tourProgressBar{
+  height:100%;
+  width:0;
+  background:#1976d2;
+}
+.tourPulse{
+  outline:2px solid #ffd54a!important;
+  outline-offset:2px!important;
+}
+#tourOverlay.pqvTourStarting #tourSpotlight,
+#tourOverlay.pqvTourStarting #tourCard{
+  visibility:hidden!important;
+  opacity:0!important;
+}
+@media (max-width:700px){
+  #tourCard{font-size:13px;}
+  .tourBtn{padding:4px 6px;}
+}
+</style>
+<script id="pqvProductTourCleanScript">
+/* PQV_PRODUCT_TOUR_CLEAN_V1
+   A single source of truth for the product tour. */
+(function(){
+  "use strict";
+  const VERSION="PQV_PRODUCT_TOUR_CLEAN_V1";
+  function byId(id){return document.getElementById(id);}
+  function state(){try{return typeof S!=="undefined"?S:window.S;}catch(_e){return window.S;}}
+  function applyVisibilitySafe(){try{if(typeof applyVisibility==="function")applyVisibility();}catch(_e){}}
+  function setPanels(controlOpen,marksOpen){
+    const st=state();
+    if(st){
+      st.panelPos="right";
+      st.showPanel=!!controlOpen;
+      st.showMarks=!!marksOpen;
+      st.panelCollapsed=false;
+      st.marksCollapsed=false;
+      applyVisibilitySafe();
+      return;
+    }
+    const c=byId("controlPanel"),m=byId("marksPanel");
+    if(c)c.classList.toggle("hidden",!controlOpen);
+    if(m)m.classList.toggle("hidden",!marksOpen);
+  }
+  function closePanels(){setPanels(false,false);}
+  function openControl(){setPanels(true,false);}
+  function openMarks(){setPanels(false,true);}
+  function lang(){return /^ja/i.test((new URLSearchParams(location.search).get("lang")||navigator.language||""))?"ja":"en";}
+  const I18N={
+    ja:{exit:"終了",prev:"戻る",next:"次へ",done:"完了",step:"ステップ",steps:[
+      {sel:"#productTourBtn",title:"Tour ボタン",text:"Tour はここから開始します。開始時は Control Panel と Marked points panel を閉じ、必要なステップでだけ開きます。",pre:closePanels},
+      {sel:"#pqvMarksPanelIcon",title:"Selection / Marked points ボタン",text:"通常クリックで Marked points panel を開閉します。Ctrl/Cmd + クリックでリアルタイム同期の別ウィンドウを開きます。",pre:closePanels},
+      {sel:"#pqvControlPanelIcon",title:"Control Panel ボタン",text:"歯車ボタンで Control Panel を開閉します。Ctrl/Cmd + クリックでリアルタイム同期の別ウィンドウを開きます。",pre:closePanels},
+      {sel:"#drop",title:"ファイル読み込み",text:"BAND、DOS、PDOS、unfold、OpenMX input、config JSON をここにドラッグ&ドロップします。",pre:closePanels},
+      {sel:"#plots",title:"プロット領域",text:"Band と DOS を確認します。ホイールズーム、Shift+ホイールパン、左ドラッグ矩形ズーム、右ドラッグパンが使えます。",pre:closePanels},
+      {sel:"#split",fallback:"#wrap",title:"Band / DOS 幅調整",text:"中央の分割バーをドラッグして Band と DOS の幅を調整します。",pre:closePanels},
+      {sel:"#controlPanel",title:"Control Panel",text:"系列、線種、凡例、解析、unfold、Graph Details などを設定します。このステップで Control Panel を開きます。",pre:openControl},
+      {sel:"#vis",box:"grp",title:"Series Visibility",text:"読み込んだ Band/DOS 系列の表示・非表示を切り替えます。",pre:openControl},
+      {sel:"#seriesStylePanel",title:"Series / Line / Point Controls",text:"Target を選び、線色、線幅、線種、点種、凡例テキストなどを編集します。",pre:openControl},
+      {sel:"#analysisPanel",title:"Analysis",text:"Band gap、DOS/PDOS integration、energy shift、crosshair などの解析機能を操作します。",pre:openControl},
+      {sel:"#marksPanel",title:"Selection / Marked points panel",text:"選択点を一覧表示し、2点の差分を確認できます。このステップで Marked points panel を開きます。",pre:openMarks},
+      {sel:"#exportCfg",title:"設定保存",text:"現在の表示設定を config JSON として保存できます。",pre:closePanels},
+      {sel:"#shortcutsBtn",title:"Shortcuts",text:"キーボードとマウス操作の一覧を表示します。? キーでも開けます。",pre:closePanels}
+    ]},
+    en:{exit:"Exit",prev:"Back",next:"Next",done:"Done",step:"Step",steps:[
+      {sel:"#productTourBtn",title:"Tour button",text:"Start the tour here. The Control Panel and Marked points panel are closed at startup and opened only when their steps need them.",pre:closePanels},
+      {sel:"#pqvMarksPanelIcon",title:"Selection / Marked points button",text:"Click to toggle Marked points. Ctrl/Cmd-click opens a real-time linked popout.",pre:closePanels},
+      {sel:"#pqvControlPanelIcon",title:"Control Panel button",text:"Click the gear button to toggle Control Panel. Ctrl/Cmd-click opens a real-time linked popout.",pre:closePanels},
+      {sel:"#drop",title:"Load files",text:"Drag and drop BAND, DOS, PDOS, unfold, OpenMX input, or config JSON files here.",pre:closePanels},
+      {sel:"#plots",title:"Plot area",text:"Inspect Band and DOS. Use wheel zoom, Shift+wheel pan, left-drag rectangle zoom, and right-drag pan.",pre:closePanels},
+      {sel:"#split",fallback:"#wrap",title:"Resize Band / DOS",text:"Drag the splitter to adjust the relative width of Band and DOS panels.",pre:closePanels},
+      {sel:"#controlPanel",title:"Control Panel",text:"Configure series, styles, legends, analysis, unfold, and Graph Details. The Control Panel opens on this step.",pre:openControl},
+      {sel:"#vis",box:"grp",title:"Series Visibility",text:"Toggle loaded Band/DOS series on and off.",pre:openControl},
+      {sel:"#seriesStylePanel",title:"Series / Line / Point Controls",text:"Select a target and edit line color, width, style, markers, and legend text.",pre:openControl},
+      {sel:"#analysisPanel",title:"Analysis",text:"Use band gap, DOS/PDOS integration, energy shift, and crosshair tools.",pre:openControl},
+      {sel:"#marksPanel",title:"Selection / Marked points panel",text:"Review selected points and compare two-point differences. Marked points opens on this step.",pre:openMarks},
+      {sel:"#exportCfg",title:"Save settings",text:"Export the current display settings as a config JSON file.",pre:closePanels},
+      {sel:"#shortcutsBtn",title:"Shortcuts",text:"Open the keyboard and mouse shortcut list. You can also press the ? key.",pre:closePanels}
+    ]}
+  };
+  function tr(){return I18N[lang()]||I18N.en;}
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function visibleEnough(el){
+    if(!el)return false;
+    const cs=getComputedStyle(el);
+    if(cs.display==="none"||cs.visibility==="hidden")return false;
+    const r=el.getBoundingClientRect();
+    return r.width>0&&r.height>0;
+  }
+  function pick(step){
+    let el=document.querySelector(step.sel);
+    if(!visibleEnough(el)&&step.fallback)el=document.querySelector(step.fallback)||el;
+    return step.box==="grp"&&el?(el.closest(".grp")||el):el;
+  }
+  function makeSteps(){return tr().steps.filter(s=>document.querySelector(s.sel));}
+  function clearTimers(){timers.forEach(t=>clearTimeout(t));timers=[];}
+  function overlay(){return byId("tourOverlay");}
+  function notReady(){}
+  function ready(){const ov=overlay();if(ov)ov.classList.remove("pqvTourStarting");}
+  function labels(){
+    const t=tr();
+    const skip=byId("tourSkip"),prev=byId("tourPrev"),next=byId("tourNext");
+    if(skip)skip.textContent=t.exit;
+    if(prev){prev.textContent=t.prev;prev.disabled=index<=0;}
+    if(next)next.textContent=index>=steps.length-1?t.done:t.next;
+  }
+  function expand(el){
+    if(!el)return;
+    if(el.tagName==="DETAILS")el.open=true;
+    let p=el.parentElement;
+    while(p){
+      if(p.tagName==="DETAILS")p.open=true;
+      if(p.classList&&p.classList.contains("grpCollapsed")){p.classList.remove("grpCollapsed");const b=p.querySelector(".grpToggle");if(b)b.textContent="▼";}
+      if(p.classList&&p.classList.contains("gdSecCollapsed")){p.classList.remove("gdSecCollapsed");const b=p.querySelector(".gdSectionToggle");if(b)b.textContent="▼";}
+      if(p.classList&&p.classList.contains("subgrpCollapsed"))p.classList.remove("subgrpCollapsed");
+      p=p.parentElement;
+    }
+  }
+  function placeCard(rect){
+    const card=byId("tourCard"),gap=12;
+    if(!card)return;
+    let left=rect.right+gap,top=rect.top;
+    if(left+card.offsetWidth>innerWidth-8)left=Math.max(8,rect.left-card.offsetWidth-gap);
+    if(top+card.offsetHeight>innerHeight-8)top=Math.max(8,innerHeight-card.offsetHeight-8);
+    card.style.left=clamp(left,8,Math.max(8,innerWidth-card.offsetWidth-8))+"px";
+    card.style.top=clamp(top,8,Math.max(8,innerHeight-card.offsetHeight-8))+"px";
+  }
+  function paint(step,el,token){
+    if(token!==renderToken)return;
+    const rect=el&&el.getBoundingClientRect();
+    if(!rect||!rect.width||!rect.height)return;
+    document.querySelectorAll(".tourPulse").forEach(e=>e.classList.remove("tourPulse"));
+    el.classList.add("tourPulse");
+    const spot=byId("tourSpotlight"),pad=8;
+    if(spot){
+      spot.style.left=clamp(rect.left-pad,4,innerWidth-8)+"px";
+      spot.style.top=clamp(rect.top-pad,4,innerHeight-8)+"px";
+      spot.style.width=Math.max(24,Math.min(rect.width+pad*2,innerWidth-8))+"px";
+      spot.style.height=Math.max(24,Math.min(rect.height+pad*2,innerHeight-8))+"px";
+    }
+    const title=byId("tourTitle"),text=byId("tourText"),meta=byId("tourStepMeta"),bar=byId("tourProgressBar");
+    if(title)title.textContent=step.title;
+    if(text)text.textContent=step.text;
+    if(meta)meta.textContent=tr().step+" "+(index+1)+" / "+steps.length;
+    if(bar)bar.style.width=((index+1)/steps.length*100)+"%";
+    labels();
+    placeCard(rect);
+    ready();
+  }
+  function render(){
+    clearTimers();
+    if(!steps.length)return end();
+    index=clamp(index,0,steps.length-1);
+    const token=++renderToken;
+    const step=steps[index];
+    notReady();
+    if(step.pre)step.pre();
+    timers.push(setTimeout(function(){
+      if(token!==renderToken)return;
+      const el=pick(step);
+      if(!el){next();return;}
+      expand(el);
+      el.scrollIntoView({behavior:"auto",block:"center",inline:"center"});
+      requestAnimationFrame(()=>requestAnimationFrame(()=>paint(step,el,token)));
+      timers.push(setTimeout(()=>paint(step,el,token),220));
+    },20));
+  }
+  function start(){
+    lastFocus=document.activeElement;
+    clearTimers();
+    renderToken++;
+    closePanels();
+    steps=makeSteps();
+    index=0;
+    const ov=overlay();
+    if(ov){
+      ov.classList.add("show","pqvTourStarting");
+      ov.setAttribute("aria-hidden","false");
+    }
+    render();
+  }
+  function end(){
+    clearTimers();
+    renderToken++;
+    const ov=overlay();
+    if(ov){
+      ov.classList.remove("show","pqvTourStarting");
+      ov.setAttribute("aria-hidden","true");
+    }
+    document.querySelectorAll(".tourPulse").forEach(e=>e.classList.remove("tourPulse"));
+    if(lastFocus&&lastFocus.focus)lastFocus.focus();
+  }
+  function next(){index>=steps.length-1?end():(index++,render());}
+  function prev(){index=Math.max(0,index-1);render();}
+  function consume(e){e.preventDefault();e.stopPropagation();if(e.stopImmediatePropagation)e.stopImmediatePropagation();}
+  function clickHandler(e){
+    const target=e.target;
+    if(!target||!target.closest)return;
+    if(target.closest("#productTourBtn")){consume(e);start();return;}
+    const ov=overlay();
+    if(!ov||!ov.classList.contains("show"))return;
+    if(target.closest("#tourNext")){consume(e);next();return;}
+    if(target.closest("#tourPrev")){consume(e);prev();return;}
+    if(target.closest("#tourSkip")||target.closest("#tourBackdrop")){consume(e);end();return;}
+  }
+  function keyHandler(e){
+    const ov=overlay();
+    if(!ov||!ov.classList.contains("show"))return;
+    if(e.key==="Escape"){consume(e);end();}
+    else if(e.key==="ArrowRight"||e.key==="Enter"){consume(e);next();}
+    else if(e.key==="ArrowLeft"){consume(e);prev();}
+  }
+  function install(){
+    if(document.documentElement.dataset.pqvProductTourClean)return;
+    document.documentElement.dataset.pqvProductTourClean=VERSION;
+    document.addEventListener("click",clickHandler,true);
+    document.addEventListener("keydown",keyHandler,true);
+    addEventListener("resize",()=>{const ov=overlay();if(ov&&ov.classList.contains("show"))render();});
+    const btn=byId("productTourBtn");
+    if(btn)btn.dataset.pqvProductTourClean=VERSION;
+  }
+  let index=0,steps=[],lastFocus=null,timers=[],renderToken=0;
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",install,{once:true});else install();
+  [300,900,1800,3000].forEach(ms=>setTimeout(install,ms));
+  window.PQVStartProductTour=start;
+})();
+</script>
 
 </body>
 </html>
